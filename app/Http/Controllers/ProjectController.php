@@ -13,7 +13,7 @@ use Inertia\Inertia;
 class ProjectController extends Controller
 {
     public function index() {
-        $projects = Project::all();
+        $projects = Project::with('skills')->get();
         return Inertia::render('Projects/Page', [
             'projects' => new ProjectCollection($projects)
         ]);
@@ -27,25 +27,37 @@ class ProjectController extends Controller
         ]);
     }
 
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         $request->validate([
             'name' => ['required'],
             'description' => ['required'],
             'image' => ['required'],
             'repo_url' => ['required'],
             'demo_url' => ['required'],
+            'skills' => ['required', 'array'], // Validate that 'skills' is an array
+            'skills.*' => ['exists:skills,id'], // Validate that each skill id exists in the 'skills' table
         ]);
+    
+        // Upload image and get the URL
         $path = $request['image']->store('images/projects', 'public');
         $uploadedImage = url('storage/' . $path);
-        Project::create([
+    
+        // Create the project
+        $project = Project::create([
             'name' => $request['name'],
             'description' => $request['description'],
             'image' => $uploadedImage,
             'repo_url' => $request['repo_url'],
             'demo_url' => $request['demo_url'],
         ]);
-        return Redirect::route('project.create')->with('success', 'Success To Created New Project');
+    
+        // Attach skills to the project
+        $project->skills()->attach($request['skills']);
+    
+        return redirect()->route('project.create')->with('success', 'Successfully created a new project');
     }
+    
 
     public function delete($id) {
         $project = Project::findOrFail($id);

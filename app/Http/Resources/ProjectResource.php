@@ -21,6 +21,7 @@ class ProjectResource extends JsonResource
             'image' => $this->image,
             'repo_url' => $this->repo_url,
             'demo_url' => $this->demo_url,
+            'skills' => SkillResource::collection($this->whenLoaded('skills')),
         ];
     }
 }

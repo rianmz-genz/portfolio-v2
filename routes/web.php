@@ -19,6 +19,7 @@ use Inertia\Inertia;
 */
 Route::get('/projects', [ProjectController::class, 'index'])->name('project.index');
 Route::get('/skills', [SkillController::class, 'index'])->name('skill.index');
+Route::get('/skills/list', [SkillController::class, 'listJson'])->name('skill.list');
 Route::get('/', function () {
     return Inertia::render('Home', [
         'title' => 'New',

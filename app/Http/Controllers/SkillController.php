@@ -44,4 +44,9 @@ class SkillController extends Controller
         $project->delete();
         return Redirect::route('skill.create');
     }
+
+    public function listJson() {
+        $skills = Skill::all();
+        return response()->json(new SkillCollection($skills), 200);
+    }
 }
