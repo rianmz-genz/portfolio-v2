@@ -2,7 +2,6 @@ import ProjectCard from "@/Components/Card/ProjectCard";
 import Each from "@/Components/Each";
 import BaseLayout from "@/Layouts/BaseLayout";
 import React from "react";
-import { BsCode, BsGlobe } from "react-icons/bs";
 const ProjectPage = ({ projects }) => {
   return (
     <BaseLayout title={"Projects"} heading={"Projects"}>

@@ -1,5 +1,6 @@
 import React from "react";
 import { BsCode, BsGlobe } from "react-icons/bs";
+import Each from "../Each";
 
 const ProjectCard = ({ item }) => {
   return (
@@ -26,6 +27,14 @@ const ProjectCard = ({ item }) => {
           </div>
         </div>
         <p>{item.description}</p>
+        <div className="flex flex-wrap gap-2 mt-2">
+          <Each
+            of={item.skills}
+            render={(skill, index) => (
+              <img key={index} className="w-12" src={skill.image} />
+            )}
+          />
+        </div>
       </div>
     </article>
   );
