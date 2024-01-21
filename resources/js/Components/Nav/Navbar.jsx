@@ -10,9 +10,12 @@ const Navbar = () => {
         itemScope
         itemType="https://schema.org/SiteNavigationElement"
       >
-        <p className="text-white text-center text-lg italic font-bold">Adrian</p>
+        <p className="text-white text-center text-lg italic font-bold">
+          Adrian
+        </p>
         <NavItem>
           <NavLink target="/">About</NavLink>
+          <NavLink target="/experiences">Experiences</NavLink>
           <NavLink target="/skills">Skills</NavLink>
           <NavLink target="/projects">Projects</NavLink>
           <NavLink target="#contact">Contact</NavLink>

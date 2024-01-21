@@ -10,20 +10,24 @@ const ProjectCard = ({ item }) => {
         <div className="flex justify-between">
           <p className="font-bold text-lg">{item.name}</p>
           <div className="flex items-center justify-center gap-2">
-            <a
-              href={item.repo_url}
-              target="_blank"
-              className="p-1 text-base bg-stone-700 rounded-xl"
-            >
-              <BsCode />
-            </a>
-            <a
-              href={item.demo_url}
-              target="_blank"
-              className="p-1 text-base bg-stone-700 rounded-xl"
-            >
-              <BsGlobe />
-            </a>
+            {item.repo_url && (
+              <a
+                href={item.repo_url}
+                target="_blank"
+                className="p-1 text-base bg-stone-700 rounded-xl"
+              >
+                <BsCode />
+              </a>
+            )}
+            {item.demo_url && (
+              <a
+                href={item.demo_url}
+                target="_blank"
+                className="p-1 text-base bg-stone-700 rounded-xl"
+              >
+                <BsGlobe />
+              </a>
+            )}
           </div>
         </div>
         <p>{item.description}</p>
