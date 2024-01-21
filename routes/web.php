@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ExperienceController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\SkillController;
@@ -46,6 +47,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/skills/create', [SkillController::class, 'create'])->name('skill.create');
     Route::post('/skills', [SkillController::class, 'store'])->name('skill.store');
     Route::delete('/skills/{id}', [SkillController::class, 'delete'])->name('skill.delete');
+
+    Route::get('/experiences/create', [ExperienceController::class, 'create'])->name('experience.create');
+    Route::post('/experiences', [ExperienceController::class, 'store'])->name('experience.store');
+    Route::delete('/experiences/{id}', [ExperienceController::class, 'delete'])->name('experience.delete');
 
 });
 
