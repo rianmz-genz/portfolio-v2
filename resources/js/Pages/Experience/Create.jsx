@@ -4,6 +4,10 @@ import { Head, router, useForm } from "@inertiajs/react";
 import Each from "@/Components/Each";
 import CreateExperienceForm from "./Partials/CreateExperienceForm";
 const CreateExperiencePage = ({ auth, createdData, experiences }) => {
+  function createExperience(e) {
+    e.preventDefault();
+    router.post("/experiences", new FormData(e.target));
+  }
   return (
     <AuthenticatedLayout
       user={auth.user}
@@ -16,7 +20,7 @@ const CreateExperiencePage = ({ auth, createdData, experiences }) => {
       <Head title="Experience" />
       <div className="py-12">
         <div className="max-w-7xl mx-auto sm:px-6 lg:px-8 bg-white lg:py-8">
-          <CreateExperienceForm />
+          <CreateExperienceForm onCreateExperience={createExperience} />
         </div>
         <div className="max-w-7xl mx-auto sm:px-6 lg:px-8 bg-white lg:py-8">
           {/* <ExperienceTable skills={skills?.data?.skills ?? []} /> */}

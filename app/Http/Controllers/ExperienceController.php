@@ -11,7 +11,13 @@ class ExperienceController extends Controller
     public function create() {
         $projects = Experience::all();
         return Inertia::render('Experience/Create', [
-            'createdData' => null,
+            // 'projects' => new ProjectCollection($projects)
+        ]);
+    }
+
+    public function store(Request $request) {
+        
+        return Inertia::render('Experience/Create', [
             // 'projects' => new ProjectCollection($projects)
         ]);
     }

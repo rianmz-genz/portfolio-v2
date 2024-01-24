@@ -6,14 +6,10 @@ import { router, useForm } from "@inertiajs/react";
 import PrimaryButton from "@/Components/PrimaryButton";
 import Each from "@/Components/Each";
 
-const CreateExperienceForm = () => {
-  function submit(e) {
-    e.preventDefault();
-    router.post("/skills", new FormData(e.target));
-  }
+const CreateExperienceForm = ({ onCreateExperience }) => {
   const fields = ["title", "job", "time"];
   return (
-    <form onSubmit={submit}>
+    <form onSubmit={onCreateExperience}>
       <div className="grid grid-cols-2 gap-3 mb-3">
         <Each
           of={fields}
